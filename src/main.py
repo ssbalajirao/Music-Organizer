@@ -2,6 +2,7 @@ from pathlib import Path
 from constants import INCOMING_DIR
 from scanner import LibraryScanner
 from metadata import MetadataReader
+from genre import GenreResolver
 
 
 
@@ -9,6 +10,7 @@ from metadata import MetadataReader
 def main():
     Scanner = LibraryScanner(INCOMING_DIR)
     reader = MetadataReader()
+    resolver = GenreResolver()
 
     albums = Scanner.scan()
 
@@ -20,12 +22,12 @@ def main():
 
         # Read metadata for all tracks in this album
         reader.read_album(album)
+        album.genre = resolver.resolve(album)
 
+        print(f"\nAlbum: {album.name}")
         print(f"Tracks Found: {len(album.tracks)}")
+        print(f"Resolved Genre: {album.genre}")
 
-        for track in album.tracks:
-
-            print(f"   - {track.path.name}")
 
 
 if __name__ == "__main__":

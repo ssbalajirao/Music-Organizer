@@ -23,8 +23,31 @@ class MetadataReader:
             "©nam"
         )
 
+        track.album = self._safe_get(
+            audio,
+            "album",
+            "TALB",
+            "©alb"
+        )
+
+        track.album_artist = self._safe_get(
+            audio,
+            "albumartist",
+            "TPE2",
+            "aART"
+        )
+
+        track.genre = self._safe_get(
+            audio,
+            "genre",
+            "TCON",
+            "©gen"
+        )
         print(f"Successfully read: {track.path.name}")
         print(f"Title: {track.title}")
+        print(f"Artist: {track.album_artist}")
+        print(f"Genre metadatafile: {track.genre}")
+        print(f"Album: {track.album}")
 
         
 

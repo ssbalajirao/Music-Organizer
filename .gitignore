@@ -219,3 +219,6 @@ __marimo__/
 
 # Sample music library
 sample_library/
+
+# config File
+config/
