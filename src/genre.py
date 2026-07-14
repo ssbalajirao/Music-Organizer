@@ -1,27 +1,28 @@
 from models import Album
 from collections import Counter
-from online_lookup import onlineGenreLookup
+
+from providers.lastfm_provider import LastFMProvider
 
 class GenreResolver:
     # determing the genre of the music
 
     def __init__(self):
-        self.lookup = onlineGenreLookup()
+        self.lookup = LastFMProvider()
 
     def _majority_vote(self, album: Album) -> str:
         genres=[]
 
         for track in album.tracks:
-            print(f"{track.title} -> {track.genre}") 
+            # print(f"{track.title} -> {track.genre}") 
             if track.genre:
                 genres.append(track.genre)
-        print(genres) 
+        # print(genres) 
         if not genres:
             return None
         
         counter = Counter(genres)
 
-        print(counter)
+        # print(counter)
 
         return counter.most_common(1)[0][0]
     

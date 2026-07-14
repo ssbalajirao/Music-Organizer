@@ -43,11 +43,11 @@ class MetadataReader:
             "TCON",
             "©gen"
         )
-        print(f"Successfully read: {track.path.name}")
-        print(f"Title: {track.title}")
-        print(f"Artist: {track.album_artist}")
-        print(f"Genre metadatafile: {track.genre}")
-        print(f"Album: {track.album}")
+        # print(f"Successfully read: {track.path.name}")
+        # print(f"Title: {track.title}")
+        # print(f"Artist: {track.album_artist}")
+        # print(f"Genre metadatafile: {track.genre}")
+        # print(f"Album: {track.album}")
 
         
 

@@ -12,6 +12,8 @@ LOGS_DIR = PROJECT_ROOT / "logs"
 SAMPLE_LIBRARY_DIR = PROJECT_ROOT / "sample_library"
 INCOMING_DIR = SAMPLE_LIBRARY_DIR / "Incoming"
 
+LIBRARY_DIR = PROJECT_ROOT / "Music Library"
+
 
 # Supported Audio Extensions
 

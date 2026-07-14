@@ -7,37 +7,8 @@ import json
 
 
 
-class onlineGenreLookup:
+class LastFMProvider:
     # handling the online search
-
-    BASEURL = "https://musicbrainz.org/ws/2"
-
-    def search_album(self, artist: str, album: str):
-
-        headers = {
-            "User-Agent": config.musicbrainz_user_agent
-        }
-
-        params = {
-            "query": f'artist:"{artist}" AND release:"{album}"',
-            "fmt": "json"
-        }
-
-        response = requests.get(
-            f"{self.BASEURL}/release/",
-            headers=headers,
-            params=params,
-            timeout=10
-        )
-
-        # print("Status Code:", response.status_code)
-
-        data = response.json()
-
-        # print(f"Results Found: {data['count']}")
-
-        return data
-    
 
     def _cleanAlbumName(self, album:str)->str:
         return re.sub(r"\s*\(.*?\)\s*", "", album).strip()
@@ -95,8 +66,7 @@ class onlineGenreLookup:
         
         genres = [tag["name"] for tag in tags]
 
-        for tag in tags:
-            genres.append(tag["name"])
+
             # print("genre", tag["name"])
 
         counter = Counter(genres)

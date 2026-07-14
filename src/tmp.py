@@ -1,12 +1,11 @@
-from online_lookup import onlineGenreLookup
+from providers.discogs_provider import DiscogsProvider
+import json
 
-lookup = onlineGenreLookup()
+lookup = DiscogsProvider()
 
 albums = [
-    ("Morgan Wallen", "Dangerous: The Double Album"),
-    ("Post Malone", "F-1 Trillion: Long Bed"),
-    ("Kanye West", "My Beautiful Dark Twisted Fantasy"),
-    ("Linkin Park", "Hybrid Theory"),
+
+    ("Zach Bryan", "American Heartbreak"),
 ]
 
 for artist, album in albums:
@@ -14,9 +13,9 @@ for artist, album in albums:
     print(f"Artist : {artist}")
     print(f"Album  : {album}")
 
-    genre = lookup.get_genre(
+    genre = lookup.search_discogs_album(
         artist=artist,
         album=album
     )
 
-    print(f"Genre  : {genre}")
+    print(json.dumps(genre, indent=4))

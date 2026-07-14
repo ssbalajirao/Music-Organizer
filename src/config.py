@@ -15,6 +15,10 @@ class Config:
             "musicbrainz_user_agent",
             "MusicOrganizer/1.0"
         )
+        self.discogs_user_token = data.get(
+            "discogs_user_token",
+            ""
+        )
 
 
 config = Config()
