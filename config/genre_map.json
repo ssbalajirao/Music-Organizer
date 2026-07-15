@@ -1,0 +1,150 @@
+{
+    "Country": [
+        "country",
+        "country pop",
+        "country rock",
+        "folk, world, & country",
+        "americana",
+        "alternative country",
+        "contemporary country",
+        "traditional country",
+        "outlaw country",
+        "bluegrass",
+        "contemporary bluegrass",
+        "traditional bluegrass",
+        "honky tonk"
+    ],
+
+    "Rock": [
+        "rock",
+        "hard rock",
+        "classic rock",
+        "alternative rock",
+        "indie rock",
+        "progressive rock",
+        "punk rock",
+        "garage rock",
+        "southern rock",
+        "blues-rock",
+        "rock & roll",
+        "rockabilly"
+    ],
+
+    "Pop": [
+        "pop",
+        "dance pop",
+        "electropop",
+        "synth-pop",
+        "teen pop",
+        "indie pop",
+        "pop/rock"
+    ],
+
+    "Hip-Hop": [
+        "hip hop",
+        "hip-hop",
+        "rap",
+        "alternative rap",
+        "hardcore rap",
+        "gangsta rap",
+        "old school rap",
+        "underground rap",
+        "west coast rap",
+        "east coast rap",
+        "trap"
+    ],
+
+    "Electronic": [
+        "electronic",
+        "electronica",
+        "electro",
+        "edm",
+        "house",
+        "techno",
+        "trance",
+        "dubstep",
+        "ambient",
+        "downtempo"
+    ],
+
+    "Metal": [
+        "metal",
+        "heavy metal",
+        "death metal",
+        "black metal",
+        "thrash metal",
+        "metalcore"
+    ],
+
+    "Jazz": [
+        "jazz",
+        "smooth jazz",
+        "latin jazz",
+        "acid jazz",
+        "fusion",
+        "cool jazz",
+        "big band"
+    ],
+
+    "Blues": [
+        "blues",
+        "acoustic blues",
+        "electric blues",
+        "country blues",
+        "delta blues",
+        "chicago blues"
+    ],
+
+    "R&B": [
+        "r&b",
+        "contemporary r&b"
+    ],
+
+    "Soul": [
+        "soul",
+        "neo-soul",
+        "motown",
+        "funk"
+    ],
+
+    "Classical": [
+        "classical",
+        "baroque",
+        "opera",
+        "orchestral",
+        "romantic",
+        "chamber music"
+    ],
+
+    "Folk": [
+        "folk",
+        "folk rock",
+        "alternative folk",
+        "traditional folk",
+        "contemporary folk"
+    ],
+
+    "Reggae": [
+        "reggae",
+        "roots reggae",
+        "dancehall",
+        "dub",
+        "ska"
+    ],
+
+    "Latin": [
+        "latin",
+        "latin pop",
+        "reggaeton",
+        "salsa",
+        "brazilian"
+    ],
+
+    "World": [
+        "world",
+        "worldbeat",
+        "afrobeat",
+        "afro-pop",
+        "celtic"
+    ]
+}

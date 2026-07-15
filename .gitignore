@@ -226,3 +226,6 @@ config/
 # Music library
 Music Library/
 
+# data json
+data/
+

@@ -40,7 +40,7 @@ class LastFMProvider:
             print(f"Last.fm lookup failed: {e}")
             return None
     
-    def get_genre(self, artist:str, album:str) -> str | None:
+    def get_genre(self, artist:str, album:str) -> list[str] | None:
         data = self.search_lastfm_album(artist, album)
 
         if data is None:
@@ -48,7 +48,7 @@ class LastFMProvider:
         album_data = data.get("album")
 
 
-        print(json.dumps(album_data, indent=4))
+        # print(json.dumps(album_data, indent=4))
 
 
         if not album_data:
@@ -68,7 +68,7 @@ class LastFMProvider:
 
 
             # print("genre", tag["name"])
+        return genres
+        # counter = Counter(genres)
 
-        counter = Counter(genres)
-
-        return counter.most_common(1)[0][0]
+        # return counter.most_common(1)[0][0]

@@ -2,12 +2,17 @@ from models import Album
 from collections import Counter
 
 from providers.lastfm_provider import LastFMProvider
+from providers.discogs_provider import DiscogsProvider
+from normalizer import GenreNormalizer
 
 class GenreResolver:
     # determing the genre of the music
 
     def __init__(self):
-        self.lookup = LastFMProvider()
+        self.lastfm = LastFMProvider()
+        self.discogs = DiscogsProvider()
+        self.normalizer = GenreNormalizer()
+
 
     def _majority_vote(self, album: Album) -> str:
         genres=[]
@@ -43,14 +48,37 @@ class GenreResolver:
 
         return True
 
-    def _lookup_online(self, album: Album) -> str:
+    def _lookup_online(self, album: Album) -> str | None:
+
         if not album.tracks:
             return None
         
         referenceTrack = album.tracks[0]
 
-        return self.lookup.get_genre(
-            artist= referenceTrack.album_artist,
-            album= referenceTrack.album
-        )
+        lastfm_genres = self.lastfm.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
+
+        discogs_genres = self.discogs.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
+
+
+        genres = []
+
+        if lastfm_genres:
+            genres.extend(lastfm_genres)
+
+        if discogs_genres:
+            genres.extend(discogs_genres)
+
+        normalized = []
+
+        for tag in genres:
+            genre  = self.normalizer.normalize(tag)
+
+            if genre:
+                normalized.append(genre)
+
+        if not normalized:
+            return None
+        counter  = Counter(normalized)
+
+        return counter.most_common(1)[0][0]
         

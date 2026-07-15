@@ -37,3 +37,34 @@ class DiscogsProvider:
         except requests.RequestException as e:
             print(f"Discogs lookup failed: {e}")
             return None
+        
+    def get_genre(self,artist:str, album:str ) -> list[str] |None:
+        data = self.search_discogs_album(artist, album)
+
+        if data is None:
+            return None
+        
+        results = data.get("results",[])
+        # print(json.dumps(album_data, indent=4))
+        if not results:
+            return None
+        album_data = results[0]
+        genre_data = album_data.get("genre")
+        style_data = album_data.get("style")
+
+        print(json.dumps(genre_data, indent=4))
+        print(json.dumps(style_data, indent=4))
+
+
+        genres = []
+
+        if genre_data:
+            genres.extend(genre_data)
+        
+        if style_data:
+            genres.extend(style_data)
+        
+        
+        return genres 
+
+

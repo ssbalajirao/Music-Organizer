@@ -30,7 +30,7 @@ def main():
 
         # print(f"\nAlbum: {album.name}")
         # print(f"Tracks Found: {len(album.tracks)}")
-        # print(f"Resolved Genre: {album.genre}")
+        print(f"Resolved Genre: {album.genre}")
 
         print(f"Destination: {album.destination_path}")
 
