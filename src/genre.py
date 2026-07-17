@@ -35,10 +35,14 @@ class GenreResolver:
     
     def resolve(self, album: Album) -> str:
         genre = self._majority_vote(album)
+        print(f"Majority Vote: {genre}")
 
         if genre:
             return genre
-        return self._lookup_online(album)
+        # return self._lookup_online(album)
+        online = self._lookup_online(album)
+        print(f"Online Genre: {online}")
+        return online
 
 
     def _needs_online_lookup(self, album: Album) -> bool:
@@ -58,7 +62,8 @@ class GenreResolver:
         lastfm_genres = self.lastfm.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
 
         discogs_genres = self.discogs.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
-
+        print("LastFM:", lastfm_genres)
+        print("Discogs:", discogs_genres)
 
         genres = []
 

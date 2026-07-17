@@ -57,12 +57,26 @@
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 
-from normalizer import GenreNormalizer
+# from normalizer import GenreNormalizer
 
-normalizer = GenreNormalizer()
+# normalizer = GenreNormalizer()
 
-normalizer._log_unknown_tag("red dirt")
-normalizer._log_unknown_tag("red dirt")
-normalizer._log_unknown_tag("hip-hop")
+# normalizer._log_unknown_tag("red dirt")
+# normalizer._log_unknown_tag("red dirt")
+# normalizer._log_unknown_tag("hip-hop")
 
-print(normalizer.unknown_tags)
+# print(normalizer.unknown_tags)
+
+# --------------------------------------------------------------------------------------------------------------------------------------------
+from pathlib import Path
+
+from transaction import Transaction
+
+transaction = Transaction()
+
+source = Path("sample_library/Incoming/test.txt")
+destination = Path("Music Library/Test/test.txt")
+
+result = transaction.transfer_file(source, destination)
+
+print(result)
