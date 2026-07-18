@@ -25,6 +25,18 @@ class Transaction:
 
             if not success:
                 return False
+            
+            for file in album.extra_files:
+                source = file
+
+                relative_path = source.relative_to(album.source_path)
+                destination = album.destination_path / relative_path
+                success = self.transfer_file(source, destination)
+
+                if not success:
+                    return False
+            # self.delete_source(album)
+                
         return True
 
 
@@ -38,14 +50,16 @@ class Transaction:
             # copying the file 
             shutil.copy2(source, destination)
 
-            if self.verifier.verify(source, destination):
-                return True
-            return False
+            return self.verifier.verify(source, destination)
         
         except Exception as e:
             print(f"failed To transfer {source.name}:{e}")
             return False
 
 
-    def delete_source(self, album):
-        pass
+    def delete_source(self, album: Album):
+        try:
+            shutil.rmtree(album.source_path)
+
+        except Exception as e:
+            print(f"Failed to delete {album.source_path}: {e}")

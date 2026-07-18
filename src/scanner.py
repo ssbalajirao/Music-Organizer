@@ -39,6 +39,7 @@ class LibraryScanner:
         )
 
         album.tracks = self._find_tracks(folder)
+        album.extra_files = self._find_extra_files(folder)
 
         return album
     
@@ -58,6 +59,14 @@ class LibraryScanner:
         return tracks
     
 
+    def _find_extra_files(self, folder:Path)->list[Path]:
+
+        extra_files =[]
+
+        for file in folder.rglob("*"):
+            if file.is_file() and not self._is_audio_file(file):
+                extra_files.append(file)
+        return extra_files
     # audio file check
 
     def _is_audio_file(self, file:Path) -> bool:

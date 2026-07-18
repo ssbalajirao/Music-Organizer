@@ -32,7 +32,7 @@ class Album:
     genre: Optional[str] = None
 
     tracks: list[Track] = field(default_factory=list)
-
+    extra_files: list[Path] = field(default_factory=list)
     destination_path: Optional[Path] = None
 
     confidence: float = 0.0

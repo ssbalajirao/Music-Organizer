@@ -1,26 +1,27 @@
-# from providers.discogs_provider import DiscogsProvider
-# from providers.lastfm_provider import LastFMProvider
-# import json
+from providers.discogs_provider import DiscogsProvider
+from providers.lastfm_provider import LastFMProvider
+import json
 
-# lookup = DiscogsProvider()
-# lastfmlookup = LastFMProvider()
+lookup = DiscogsProvider()
+lastfmlookup = LastFMProvider()
 
-# albums = [
+albums = [
 
-#     ("Zach Bryan", "American Heartbreak"),
-# ]
+    ("Arpit Bala", "Keychain Laalu"),
+]
 
-# for artist, album in albums:
-#     print("-" * 50)
-#     print(f"Artist : {artist}")
-#     print(f"Album  : {album}")
+for artist, album in albums:
+    print("-" * 50)
+    print(f"Artist : {artist}")
+    print(f"Album  : {album}")
 
-#     genre = lastfmlookup.get_genre(
-#         artist=artist,
-#         album=album
-#     )
-
-#     print(json.dumps(genre, indent=4))
+    genre = lookup.get_genre(
+        artist=artist,
+        album=album
+    )
+    print(lastfmlookup.get_genre("Arpit Bala", "Keychain Laalu"))
+    print(lookup.get_genre("Arpit Bala", "Keychain Laalu"))
+    # print(json.dumps(genre, indent=4))
 # -------------------------------------------------------------------------------------------------------
 
 
@@ -68,15 +69,15 @@
 # print(normalizer.unknown_tags)
 
 # --------------------------------------------------------------------------------------------------------------------------------------------
-from pathlib import Path
+# from pathlib import Path
 
-from transaction import Transaction
+# from transaction import Transaction
 
-transaction = Transaction()
+# transaction = Transaction()
 
-source = Path("sample_library/Incoming/test.txt")
-destination = Path("Music Library/Test/test.txt")
+# source = Path("sample_library/Incoming/test.txt")
+# destination = Path("Music Library/Test/test.txt")
 
-result = transaction.transfer_file(source, destination)
+# result = transaction.transfer_file(source, destination)
 
-print(result)
+# print(result)

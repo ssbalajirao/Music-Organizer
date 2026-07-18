@@ -11,14 +11,15 @@ class Config:
             data = json.load(file)
 
         self.lastfm_api_key = data.get("lastfm_api_key", "")
-        self.musicbrainz_user_agent = data.get(
-            "musicbrainz_user_agent",
-            "MusicOrganizer/1.0"
-        )
-        self.discogs_user_token = data.get(
-            "discogs_user_token",
-            ""
-        )
+        # discog isnt using API keys rn 
+        # self.musicbrainz_user_agent = data.get(
+        #     "musicbrainz_user_agent",
+        #     "MusicOrganizer/1.0"
+        # )
+        # self.discogs_user_token = data.get(
+        #     "discogs_user_token",
+        #     ""
+        # )
 
 
 config = Config()

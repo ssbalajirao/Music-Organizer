@@ -32,6 +32,8 @@ class DiscogsProvider:
 
             response.raise_for_status()
 
+            # print(json.dumps(response.json(), indent=4))
+
             return response.json()
 
         except requests.RequestException as e:

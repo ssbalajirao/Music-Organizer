@@ -38,10 +38,14 @@ class GenreResolver:
         print(f"Majority Vote: {genre}")
 
         if genre:
-            return genre
+            normalized = self.normalizer.normalize(genre)
+
+            if normalized:
+                return normalized
+            # return genre
         # return self._lookup_online(album)
         online = self._lookup_online(album)
-        print(f"Online Genre: {online}")
+        # print(f"Online Genre: {online}")
         return online
 
 
@@ -55,15 +59,15 @@ class GenreResolver:
     def _lookup_online(self, album: Album) -> str | None:
 
         if not album.tracks:
-            return None
+            return "Unknown"
         
         referenceTrack = album.tracks[0]
 
         lastfm_genres = self.lastfm.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
 
         discogs_genres = self.discogs.get_genre(artist=referenceTrack.album_artist, album= referenceTrack.album)
-        print("LastFM:", lastfm_genres)
-        print("Discogs:", discogs_genres)
+        # print("LastFM:", lastfm_genres)
+        # print("Discogs:", discogs_genres)
 
         genres = []
 
@@ -82,7 +86,7 @@ class GenreResolver:
                 normalized.append(genre)
 
         if not normalized:
-            return None
+            return "Unknown"
         counter  = Counter(normalized)
 
         return counter.most_common(1)[0][0]
